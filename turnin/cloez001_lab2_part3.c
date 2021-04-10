@@ -17,24 +17,29 @@ int main(void) {
     DDRC = 0xFF; PORTC = 0x00; // Configure port B's 8 pins as outputs, initialize to 0s
 
     unsigned char tmpA= 0x00; 
-    unsigned char tmpC= 0x00;
-    unsigned char pin_A0, pin_A1, pin_A2, pin_A3;
+    unsigned char cntavail= 0x00;
 
     while(1) {
-	// 1) Read input
 	tmpA = PINA & 0x0F;
-	// 3) Write output
-	pin_A0 = (tmpA & 0x01);
-	pin_A1 = (tmpA & 0x02) >> 1;
-	pin_A2 = (tmpA & 0x04) >> 2;
-	pin_A3 = (tmpA & 0x08) >> 3;
-	tmpC = pin_A0 + pin_A1 + pin_A2 + pin_A3; 
-	
-	if(tmpC == 4){
-	    PORTC = tmpC | 0x80;
-	} else {
-	    PORTC = tmpC & 0x0F;
-	}
+
+        // no parking spots taken
+        if (PINA == 0x00){
+            cntavail = 0x00;
+        } // one spot taken
+        else if (tmpA == 0x01 || tmpA == 0x02 || tmpA == 0x04 || tmpA == 0x08){
+            cntavail = 0x01;
+        } //two spots taken
+        else if (tmpA == 0x03 || tmpA == 0x06 || tmpA == 0x0C || tmpA == 0x05 || tmpA == 0x09 || tmpA == 0x0A){
+                cntavail = 0x02;
+        } // three spots taken
+        else if(tmpA ==  0x07 || tmpA == 0x0B || tmpA == 0x0D || tmpA == 0x0E){
+            cntavail = 0x03;
+        } // four spots taken
+        else{
+            cntavail = 0x84;
+        }
+        // result/output
+        PORTC = cntavail;
     }
     return 0;
 }
