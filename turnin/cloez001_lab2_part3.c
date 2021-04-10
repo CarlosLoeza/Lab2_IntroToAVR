@@ -24,7 +24,7 @@ int main(void) {
 
         // no parking spots taken
         if (tmpA == 0x00){
-            cntavail = 0x84;
+            cntavail = 0x04;
         } // one spot taken
         else if (tmpA == 0x01 || tmpA == 0x02 || tmpA == 0x04 || tmpA == 0x08){
             cntavail = 0x03;
@@ -36,7 +36,7 @@ int main(void) {
             cntavail = 0x01;
         } // four spots taken
         else{
-            cntavail = 0x00;
+            cntavail = 0x80;
         }
         // result/output
         PORTC = cntavail;
