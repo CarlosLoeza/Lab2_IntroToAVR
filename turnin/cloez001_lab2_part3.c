@@ -23,20 +23,20 @@ int main(void) {
 	tmpA = PINA & 0x0F;
 
         // no parking spots taken
-        if (PINA == 0x00){
-            cntavail = 0x00;
+        if (tmpA == 0x00){
+            cntavail = 0x84;
         } // one spot taken
         else if (tmpA == 0x01 || tmpA == 0x02 || tmpA == 0x04 || tmpA == 0x08){
-            cntavail = 0x01;
+            cntavail = 0x03;
         } //two spots taken
         else if (tmpA == 0x03 || tmpA == 0x06 || tmpA == 0x0C || tmpA == 0x05 || tmpA == 0x09 || tmpA == 0x0A){
                 cntavail = 0x02;
         } // three spots taken
         else if(tmpA ==  0x07 || tmpA == 0x0B || tmpA == 0x0D || tmpA == 0x0E){
-            cntavail = 0x03;
+            cntavail = 0x01;
         } // four spots taken
         else{
-            cntavail = 0x84;
+            cntavail = 0x00;
         }
         // result/output
         PORTC = cntavail;

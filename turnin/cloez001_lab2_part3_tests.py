@@ -1,4 +1,6 @@
 
+
+
 # Array of tests to run (in order)
 # Each test contains
 #   description - 
@@ -15,25 +17,25 @@
 # An example set of tests is shown below. It is important to note that these tests are not "unit tests" in 
 # that they are not ran in isolation but in the order shown and the state of the device is not reset or 
 # altered in between executions (unless preconditions are used).
-tests = [ {'description': 'PINA: 0x00 => PORTC: 0x00',
+tests = [ {'description': 'PINA: 0x00 => PORTC: 0x84',
     'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 1 } ],
-    'expected': [('PORTC',0x00)],
+    'expected': [('PORTC',0x84)],
     },
-    {'description': 'PINA: 0x01 => PORTC: 0x01',
+    {'description': 'PINA: 0x01 => PORTC: 0x03',
     'steps': [ {'inputs': [('PINA',0x01)], 'iterations': 1 } ],
-    'expected': [('PORTC',0x01)],
+    'expected': [('PORTC',0x03)],
     },
-    {'description': 'PINA: 0x02 => PORTC: 0x01',
+    {'description': 'PINA: 0x02 => PORTC: 0x03',
     'steps': [ {'inputs': [('PINA',0x02)], 'iterations': 1 } ],
-    'expected': [('PORTC',0x01)],
+    'expected': [('PORTC',0x03)],
     },
     {'description': 'PINA: 0x03 => PORTC: 0x02',
     'steps': [ {'inputs': [('PINA',0x03)], 'iterations': 1 } ],
     'expected': [('PORTC',0x02)],
     },
-    {'description': 'PINA: 0x04 => PORTC: 0x01',
+    {'description': 'PINA: 0x04 => PORTC: 0x03',
     'steps': [ {'inputs': [('PINA',0x04)], 'iterations': 1 } ],
-    'expected': [('PORTC',0x01)],
+    'expected': [('PORTC',0x03)],
     },
     {'description': 'PINA: 0x05 => PORTC: 0x02',
     'steps': [ {'inputs': [('PINA',0x05)], 'iterations': 1 } ],
@@ -43,13 +45,13 @@ tests = [ {'description': 'PINA: 0x00 => PORTC: 0x00',
     'steps': [ {'inputs': [('PINA',0x06)], 'iterations': 1 } ],
     'expected': [('PORTC',0x02)],
     },
-    {'description': 'PINA: 0x07 => PORTC: 0x03',
+    {'description': 'PINA: 0x07 => PORTC: 0x01',
     'steps': [ {'inputs': [('PINA',0x07)], 'iterations': 1 } ],
-    'expected': [('PORTC',0x03)],
+    'expected': [('PORTC',0x01)],
     },
-    {'description': 'PINA: 0x0F => PORTC: 0x84',
+    {'description': 'PINA: 0x0F => PORTC: 0x00',
     'steps': [ {'inputs': [('PINA',0x0F)], 'iterations': 1 } ],
-    'expected': [('PORTC',0x84)],
+    'expected': [('PORTC',0x00)],
     },
     ]
 #watch = ['PORTC']
